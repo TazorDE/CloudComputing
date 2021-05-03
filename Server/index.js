@@ -14,7 +14,7 @@ app.use(cors({ origin: '*' }));
 
 app.use(express.static('public'));
 
-const port = 3000;
+const port = process.env.PRODUCTIONPORT;
 
 //import modules
 const classifyImage = require('./modules/classify_image');
