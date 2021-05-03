@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<body>
+    <form class="centered" method="POST" enctype="multipart/form-data" action="/uploadImage">
+        <label for="image">Please only upload .png files.</label>
+        <br> Files that are otherwise encoded but falsely named will be rejected.
+        <br>
+        <input type="file" name="image" />
+        <br>
+        <input type="submit" />
+        <br>
+        <button>
+            <a href="/gallery">Visit Watsons' Gallery</a>
+        </button>   
+    </form>
+
+    <style>
+        body {
+            height: 100vh;
+        }
+
+        .centered {
+            display: flex;
+            justify-content: center;
+            align-self: center;
+            justify-self: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        .centered>*{
+            margin-top: 1rem;
+        }
+    </style>
+</body>

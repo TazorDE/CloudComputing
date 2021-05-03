@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<body>
+    <div class="imgcontainer" id="imagecontainer">
+        <image class="imgcontainer" src="{{imagepath}}"></image>
+    </div> 
+    <div class="results" id="classification">
+        {{#each classification}}
+            <div class="single_result"><b>Result:</b><p>{{this.class}}</p><b>Certainty</b><p>{{this.score}}</p></div>
+        {{/each}}
+    </div>
+    <br>
+    <br>
+    <a href="/gallery">Visit Watsons` Gallery</a>
+    <style>
+        .imgcontainer{display: flex;justify-content: center;} img{border-radius: 2rem; width: 35%; max-height: 35%;} .results{margin-top: 2rem; display: flex; justify-content: center;} .single_result{padding: 1rem; margin-left: 1rem; margin-right: 1rem; border: 1px solid #000; border-radius: 1rem;}</style>
+</body>
