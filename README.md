@@ -1,6 +1,8 @@
 ## Visual Recognition Gallery
 
-This project requires a .env file in the ./Server directory with the following information.
+### Set Up
+
+This project requires a folder named "images" in the public directory of the server and a .env file in the ./Server directory with the following information.
 
 ```
 VISUAL_RECOGNITION_APIKEY=xxxx
