@@ -8,10 +8,10 @@ const cloudant = Cloudant({ url: process.env.CLOUDANT_URL, plugins: { iamauth: {
 //used to add the classificaton result to the database(json) after uploading the image
 async function addToDB(filename, classification) {
 
-    //get data from database
+    //set up data source
     let db = cloudant.use('image_classification');
     let data = await db.get('image_data');
-
+    //set up new object to insert into the database
     let newClassification = {};
     newClassification.id = filename;
     newClassification.classes = await classification;
@@ -25,14 +25,9 @@ async function addToDB(filename, classification) {
 
 //used in the create_gallery module to retrieve the classification for use in the gallery html
 async function getDBcontent() {
-    // let classes = JSON.parse(fs.readFileSync('./data/data.json'));
-    // // console.log(classes);
-    // return classes;
-
     let db = cloudant.use('image_classification');
     let data = await db.get('image_data');
     return data.images;
 }
-
 module.exports.addToDB = addToDB;
 module.exports.getDBcontent = getDBcontent;

@@ -19,14 +19,13 @@ async function classify_image(image) {
     function onError(err){
         console.log('Error encountered! \n');
     }
-
+    // set a parameters object that contains the imagefile and that sets the threshold for classification results
     let params = {
         imagesFile: imagefile,
         threshold: 0.6
     };
-
+    //classify the imagefile and handle errors
     let result = await visualRecognition.classify(params).catch(err => {
-        // console.log(err);
         return 400
     })
     if(result != 400){

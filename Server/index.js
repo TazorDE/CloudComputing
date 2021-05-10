@@ -45,11 +45,14 @@ app.get('/', express.static(path.join(__dirname, "./public")));
 
 app.post('/uploadImage', upload.single("image"), async (req, res) => {
   let currentTime = new Date;
+  //generate filepath and name
   let newFilepath = `.\\public\\images\\${currentTime.getFullYear()}${currentTime.getDate()}${currentTime.getDay()}${currentTime.getHours()}${currentTime.getMinutes()}${currentTime.getSeconds()}${currentTime.getMilliseconds()}.png`;
   const tempPath = req.file.path;
   const targetPath = path.join(__dirname, `${newFilepath}`);
 
-  //save the uploaded image to ./public/images with the timestamp of the uploading as a name.
+  // save the uploaded image to ./public/images with the timestamp of the uploading as a name
+  // classify the uploaded image and save the result to the database, then display the result
+  // if an error occurs at any point abort the process and delete the temporary image file
   if (path.extname(req.file.originalname).toLowerCase() === ".png") {
     fs.rename(tempPath, targetPath, async err => {
       if (err) return handleError(err, res);
